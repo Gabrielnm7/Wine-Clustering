@@ -3,8 +3,10 @@
 
 FROM python:3.9
 
-ADD pipeline.py .
+WORKDIR /test-fastapi
 
-RUN pip install requirement.txt
+COPY requirements.txt .
+COPY pipeline.py .
+RUN pip install -r requirements.txt
 
-CMD ["python", "./pipeline.py"]
+CMD ["python", "pipeline.py"]

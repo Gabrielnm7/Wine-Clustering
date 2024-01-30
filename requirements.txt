@@ -1,6 +1,6 @@
-Python==3.9.5 
 Numpy==1.23.0
 Pandas==1.4.3
 Matplotlib==3.6.2
 Seaborn==0.12.2
-Scikit==Learn 1.2.2
+scikit-Learn==1.2.2
+uvicorn

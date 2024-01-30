@@ -6,14 +6,15 @@ By employing data analysis techniques and unsupervised learning algorithms such 
 
 Some curious pattern to see is the potential positive linear relationship between attributes like flavanoids and total_phenols:
 <p>
-<img src="./_src/images/linear_relationship.png"  height=300>
+<img src="./_src/images/linear_relationship.png"  height=345>
 </p>
 
  Through this analysis, we aim to gain insights into the characteristics of different types of wines and potentially identify distinct clusters based on their attributes. At the end, we perform a KMeans Algorithm to cluster the different types, resulting in clear visualizations like the PCA plots shown below
 
 <p>
-<img src="./_src/images/PCA_2dims.png">
-<img src="./_src/images/pca_3dims.png"> 
+<img src="./_src/images/PCA_2dims.png" height=325>
+<img src="./_src/images/pca_3dims.png" height=375> 
+
 As demonstrated, the clustering is well done, offering valuable insights into the underlying structure of the data
 
 

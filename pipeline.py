@@ -18,12 +18,11 @@ url = "https://storage.googleapis.com/the_public_bucket/wine-clustering.csv"
 app.mount("/static", StaticFiles(directory="."), name="static")
 
 @app.get("/")
-def load_dataset():
-    """
-    Loading the dataset in pandas dataframe
-    return: two datasets, the first one is the dataframe and the 2nd is the same 
-    but normalized. 
-    """
+def introduction():
+    # Project presentation
+    project_title = "<h1>Wine Clustering Project</h1>"
+    project_introduction = "<p>The Wine Clustering Project endeavors to explore and analyze a dataset encompassing various attributes of different types of wines and discover some patterns. First, let's dive into the dataset to see how it is.</p>"
+
     # loading wine dataset
     data_wine = pd.read_csv(url)
 
@@ -37,10 +36,15 @@ def load_dataset():
     data_normalized = (data_wine - data_wine.min())/(data_wine.max()-data_wine.min())
 
     # Convert DataFrame to HTML format
-    html_content += "<p>Normalized data:</p>"
+    html_content += "<h2>Normalized data:</h2>"
+    html_content += "<p>Although there are few outliers, the attributes exhibit varying scales. Normalization ensures consistency in scale across all features, enhancing the effectiveness of subsequent analysis</p>"
     html_content += data_normalized.head(5).to_html()
 
-    return HTMLResponse(content=html_content)
+    # Combine project presentation with dataset information
+    full_html_content = project_title + project_introduction + html_content
+
+    return HTMLResponse(content=full_html_content)
+
 
 def clustering_analysis():
     data_wine = pd.read_csv(url)
@@ -94,6 +98,10 @@ def clustering_analysis():
     plt.title('PCA Plot of Wine Data with Clusters')
     plt.savefig('pca_plot.png')
 
+@app.get("/Analysis")
+def analysis():
+    return None
+
 @app.get("/Clustering")
 def pca_clustering():
     clustering_analysis()
@@ -112,4 +120,4 @@ def pca_clustering():
     return HTMLResponse(content=html_content)
 
 if __name__=="__main__":
-    uvicorn.run(app,port=8000,host="192.168.0.175")
+    uvicorn.run(app,port=8000,host="0.0.0.0")

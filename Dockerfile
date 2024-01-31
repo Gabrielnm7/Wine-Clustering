@@ -1,9 +1,9 @@
 # I just testing the dockerization. It is not ready yet so 
 # Dissmiss this
 
-FROM python:3.9
+FROM python:3.9.5
 
-WORKDIR /test-fastapi
+WORKDIR /fastapi-test
 
 COPY requirements.txt .
 COPY pipeline.py .

@@ -2,20 +2,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.cluster import KMeans
-from sklearn.metrics import silhouette_score
 from sklearn.decomposition import PCA
-from mpl_toolkits.mplot3d import Axes3D
 import warnings
 warnings.simplefilter("ignore")
 import uvicorn
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse 
 from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 url = "https://storage.googleapis.com/the_public_bucket/wine-clustering.csv"
-templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="."), name="static")
 
 data_wine = pd.read_csv(url)
